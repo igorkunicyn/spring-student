@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+    <style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input [type=text]{
+        display: inline-block;
+        width: 200px;
+    }
+
+    input [type=password]{
+        display: inline-block;
+        width: 200px;
+    }
+
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+
+</head>
+
+<body>
+<div align="center">
+        <h2>Регистрация</h2>
+        <form action="#" th:action="@{/registration}" method="post" th:object="${userForm}">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" th:field="*{username}" id="username"/><br>
+            <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Usrename error </div>
+            <div style="color:red" th:if="${usernameError != null}">
+                <span>Пользователь с таким именем уже существует</span>
+                <br/>
+            </div>
+
+            <label for="password">Пароль:</label>
+            <input type="password" th:field="*{password}" id="password"/><br>
+            <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error </div>
+            <div style="color:red" th:if ="${passwordError != null}">
+                <span>Пароли не совпадают</span>
+                <br/>
+            </div>
+            <label>Повторите пароль:</label>
+            <input type="password" th:field="*{passwordConfirm}"/><br>
+            <div style="color:red" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}">Password error </div>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    <a href="/">Главная</a>
+</div>
+</body>
+</html>
+
+
