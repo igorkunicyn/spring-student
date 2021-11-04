@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование студента</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container" align="center">
+  <h1>Редактирование студента</h1>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${student}" method="post">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Номер</td>
+                <td>
+                    <input type="text" th:field="*{id}" readonly="readonly" />
+                </td>
+            </tr>
+            <tr>
+                <td>Имя:</td>
+                <td><input type="text" th:value="${student.name}" name="name"/></td>
+
+            </tr>
+            <tr>
+                <td>Возраст:</td>
+                <td><input type="text" th:value="${student.age}" name="age" /></td>
+
+            </tr>
+            <tr>
+                <td colspan="5"><button type="submit" class="btn btn-success">Сохранить</button> </td>
+            </tr>
+    </table>
+    </form>
+
+</div>
+</body>
+</html>
